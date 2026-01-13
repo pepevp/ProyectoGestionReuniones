@@ -1,0 +1,24 @@
+<header>
+  <button class="menu-toggle" (click)="toggleSidebar()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="logo">
+    <img src="assets/img/Logo.png" alt="Logo" />
+  </div>
+  <h1>¡Bienvenido, Miguel Ángel!</h1>
+</header>
+
+<nav class="sidebar" [class.active]="sidebarActive">
+  <button class="nav-btn"  routerLink="/dashboard">DashBoard</button>
+  <button class="nav-btn" routerLink="/reuniones">Reuniones</button>
+  <button class="nav-btn" routerLink="/actas">Actas</button>
+  <button class="nav-btn">Ayuda/FAQs</button>
+  <button class="nav-btn">Cerrar sesión</button>
+</nav>
+
+
+<main>
+  <router-outlet></router-outlet>
+</main>

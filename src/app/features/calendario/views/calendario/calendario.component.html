@@ -1,0 +1,49 @@
+<main class="main-content">
+  <div class="container">
+    <!-- Calendario a la izquierda -->
+    <section class="calendar-section">
+      <h2>Inglés Profesional</h2>
+      <div class="calendar">
+        <div class="calendar-header">
+          <button class="nav-btn-cal" id="prevMonth">&lt;</button>
+          <h3 id="monthYear">Enero 2026</h3>
+          <button class="nav-btn-cal" id="nextMonth">&gt;</button>
+        </div>
+        <div class="calendar-weekdays">
+          <div class="weekday">Lun</div>
+          <div class="weekday">Mar</div>
+          <div class="weekday">Mié</div>
+          <div class="weekday">Jue</div>
+          <div class="weekday">Vie</div>
+          <div class="weekday">Sáb</div>
+          <div class="weekday">Dom</div>
+        </div>
+        <div class="calendar-days">
+          <div
+            class="day"
+            *ngFor="let day of calendarDays"
+            [ngClass]="{
+              'empty': day.empty,
+              'disabled': day.disabled,
+              'available': !day.empty && !day.disabled,
+              'selected': selectedDate?.getDate() === day.day && !day.empty && !day.disabled
+            }"
+            (click)="selectDay(day)"
+          >
+            {{ day.empty ? '' : day.day }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Panel de horas a la derecha -->
+    <aside class="hours-panel">
+      <h2>Horas disponibles del profesor</h2>
+      <div class="hours-container">
+        <button class="hour-btn">11:00 - 11:55</button>
+        <button class="hour-btn">12:00 - 12:55</button>
+      </div>
+      <button class="confirm-btn">Confirmar reunión</button>
+    </aside>
+  </div>
+</main>

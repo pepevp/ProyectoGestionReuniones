@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Reuniones</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <aside class="action-panel">
+                <button class="action-btn"  routerLink="/asignaturas">Solicitar reunión</button>
+                <button class="action-btn" routerLink="/reuniones">Ver reuniones</button>
+                <button class="action-btn" routerLink="/actas">Consultar actas</button>
+            </aside>
+
+            <section class="meetings-panel">
+                <h2>Próximas reuniones</h2>
+                <div class="meeting">
+                    <p>Jueves 14 de Septiembre a las 11:00 con Nuria Pajares (IPE)</p>
+                </div>
+                <div class="meeting">
+                    <p>Martes 21 de Septiembre a las 13:00 con Nuria Fuentes (Programación)</p>
+                </div>
+            </section>
+        </div>
+
+        <router-outlet></router-outlet>
+
+    </main>
+
+</body>
+</html>
