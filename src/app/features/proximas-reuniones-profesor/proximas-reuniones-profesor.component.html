@@ -1,0 +1,30 @@
+<main class="main-content">
+  <div class="container">
+    <h2 class="section-title">Próximas reuniones</h2>
+
+    <div class="meetings-list">
+      <div class="meeting-row" *ngFor="let meeting of meetings">
+        
+        <div class="info-block main-info">
+          <p class="date-text">{{ meeting.date }} {{ meeting.time }}</p>
+          <p class="subject-text">{{ meeting.subject }}</p>
+        </div>
+
+        <div class="info-block teacher-info">
+          <p class="teacher-name">{{ meeting.teacher }}</p>
+          <p class="initials">{{ meeting.initials }}</p>
+        </div>
+
+        <div class="action-block">
+          <button *ngIf="meeting.canFillActa" class="btn btn-green">
+            Acceder y rellenar acta
+          </button>
+          <button *ngIf="!meeting.canFillActa" class="btn btn-gray" disabled>
+            Próximamente
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

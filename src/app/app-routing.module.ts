@@ -6,8 +6,12 @@ import { AsignaturasComponent } from './features/selectorAsignatura/views/asigna
 import { CalendarioComponent } from './features/calendario/views/calendario/calendario.component';
 import { ReunionesComponent } from './features/reuniones/views/reuniones.component';
 import { ActasComponent } from './features/actasPasadas/actas-pasadas.component';
-
-
+import { DashboardProfesorComponent } from './features/dashboard-profesor/dashboard-profesor.component';
+import { CalendarioProfesorComponent } from './features/calendario-profesor/calendario-profesor.component';
+import { ProximasReunionesProfesorComponent } from './features/proximas-reuniones-profesor/proximas-reuniones-profesor.component';
+import { NotificacionesProfesorComponent } from './features/notificaciones-profesor/notificaciones-profesor.component';
+import { ReunionesPasadasProfesorComponent } from './features/reuniones-pasadas-profesor/reuniones-pasadas-profesor.component';
+import { ActaPasadaProfesorComponent} from './features/acta-pasada-profesor/acta-pasada-profesor.component';
 const routes: Routes = [
   {
     path: '',
@@ -18,9 +22,14 @@ const routes: Routes = [
       { path: 'asignaturas', component: AsignaturasComponent },
       { path: 'calendario', component: CalendarioComponent },
       { path: 'reuniones', component: ReunionesComponent },
-      { path: 'actas', component: ActasComponent }/*,
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
-    */]
+      { path: 'actas', component: ActasComponent },
+      { path: 'dashboardprofesor', component: DashboardProfesorComponent },
+      { path: 'calendarioprofesor', component: CalendarioProfesorComponent },
+      { path: 'reunionesprofesor', component: ProximasReunionesProfesorComponent },
+      { path: 'notificacionesprofesor', component: NotificacionesProfesorComponent },
+      { path: 'reunionespasadasprofesor', component: ReunionesPasadasProfesorComponent },
+      { path: 'actapasadaprofesor', component: ActaPasadaProfesorComponent }
+      ]
   }
 ];
 

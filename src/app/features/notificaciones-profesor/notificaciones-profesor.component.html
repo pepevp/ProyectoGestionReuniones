@@ -1,0 +1,27 @@
+<div class="notifications-container">
+  <div class="notifications-header">
+    <div class="bell-icon">
+      <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.9 22 12 22Z" fill="#FFA726"/>
+        <path d="M18 16V11C18 7.93 16.37 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5C11.17 2.5 10.5 3.17 10.5 4V4.68C7.64 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16Z" fill="#FFA726"/>
+      </svg>
+    </div>
+    <h1>Notificaciones:</h1>
+  </div>
+
+  <div class="notifications-list">
+    <div class="notification-item" *ngFor="let notification of notifications">
+      <div class="notification-icon" [class.accepted]="notification.type === 'accepted'" [class.cancelled]="notification.type === 'cancelled'">
+        <svg *ngIf="notification.type === 'accepted'" width="30" height="30" viewBox="0 0 24 24" fill="none">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="#4CAF50"/>
+        </svg>
+        <svg *ngIf="notification.type === 'cancelled'" width="30" height="30" viewBox="0 0 24 24" fill="none">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="#999"/>
+        </svg>
+      </div>
+      <div class="notification-text">
+        {{ notification.message }}
+      </div>
+    </div>
+  </div>
+</div>

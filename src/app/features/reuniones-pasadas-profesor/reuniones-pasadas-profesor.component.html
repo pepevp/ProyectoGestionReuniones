@@ -1,0 +1,61 @@
+<div class="past-meetings-container">
+  <h1 class="page-title">Reuniones pasadas</h1>
+
+  <div class="search-container">
+    <div class="search-box">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="8" cy="8" r="6" stroke="#666" stroke-width="2"/>
+        <path d="M12 12L18 18" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <input type="text" [(ngModel)]="searchTerm" (input)="filterMeetings()" placeholder="Buscar acta..." class="search-input">
+    </div>
+  </div>
+
+  <div class="filters-bar">
+    <span class="filter-label">Filtros:</span>
+    <button class="filter-btn" 
+            [class.active]="activeFilter === 'hoy'"
+            (click)="setFilter('hoy')">Hoy</button>
+    <button class="filter-btn" 
+            [class.active]="activeFilter === 'semana'"
+            (click)="setFilter('semana')">Esta semana</button>
+    <button class="filter-btn" 
+            [class.active]="activeFilter === 'mes'"
+            (click)="setFilter('mes')">Este mes</button>
+    <button class="apply-filters-btn" (click)="applyFilters()">Aplicar filtros</button>
+  </div>
+
+  <div class="table-container">
+    <table class="meetings-table">
+      <thead>
+        <tr>
+          <th>Alumno</th>
+          <th>Asignatura</th>
+          <th>Fecha</th>
+          <th>Reunión</th>
+          <th>Acta</th>
+        </tr>
+      </thead>
+      <tbody>
+  <tr *ngFor="let meeting of filteredMeetings">
+    <td>{{ meeting.student }}</td>
+    <td>{{ meeting.subject }}</td>
+    <td>{{ meeting.date }}</td>
+    <td>{{ meeting.topic }}</td>
+    <td>
+      <button *ngIf="meeting.actaStatus === 'enviada'" 
+              class="acta-btn enviada"
+              routerLink="/actapasadaprofesor"> 
+        Acta enviada
+      </button>
+
+      <button *ngIf="meeting.actaStatus === 'no-realizada'" 
+              class="acta-btn no-realizada">
+        Acta no realizada
+      </button>
+    </td>
+  </tr>
+</tbody>
+    </table>
+  </div>
+</div>
