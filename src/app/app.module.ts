@@ -20,6 +20,9 @@ import { ReunionesPasadasProfesorComponent } from './features/reuniones-pasadas-
 
 import { CalendarioProfesorComponent } from './features/calendario-profesor/calendario-profesor.component';
 import { ActaPasadaProfesorComponent } from './features/acta-pasada-profesor/acta-pasada-profesor.component';
+import { FaqComponent } from './features/faq/faq.component';
+import { ModalComponent } from './shared/components/ui/modal/modal.component';
+
 
 
 @NgModule({
@@ -35,9 +38,12 @@ import { ActaPasadaProfesorComponent } from './features/acta-pasada-profesor/act
     ReunionesComponent,
     ActasComponent,
     DashboardProfesorComponent,
-    ReunionesPasadasProfesorComponent
-    
-    
+    DashboardProfesorComponent,
+    ReunionesPasadasProfesorComponent,
+    FaqComponent,
+    ModalComponent
+
+
     // CalendarioProfesorComponent <-- ELIMINADO DE AQUÍ
   ],
   imports: [

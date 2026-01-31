@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from '../../../../shared/services/modal.service';
 
 @Component({
   selector: 'app-calendario',
@@ -22,7 +23,7 @@ export class CalendarioComponent implements OnInit {
 
   hours: string[] = ['11:00 - 11:55', '12:00 - 12:55'];
 
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.renderCalendar();
@@ -82,9 +83,15 @@ export class CalendarioComponent implements OnInit {
 
   confirmMeeting(): void {
     if (this.selectedDate && this.selectedHour) {
-      alert(`Reunión confirmada para ${this.selectedDate.toLocaleDateString('es-ES')} a las ${this.selectedHour}`);
+      this.modalService.alert(
+        'Reunión Confirmada',
+        `Reunión confirmada para ${this.selectedDate.toLocaleDateString('es-ES')} a las ${this.selectedHour}`
+      );
     } else {
-      alert('Por favor, selecciona una fecha y una hora');
+      this.modalService.alert(
+        'Atención',
+        'Por favor, selecciona una fecha y una hora'
+      );
     }
   }
 

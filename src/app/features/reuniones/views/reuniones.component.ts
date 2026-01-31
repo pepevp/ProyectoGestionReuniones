@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from '../../../shared/services/modal.service';
 
 interface Meeting {
   date: string;
@@ -35,7 +36,7 @@ export class ReunionesComponent implements OnInit {
   searchTerm: string = '';
   activeFilter: string | null = null;
 
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.filteredMeetings = [...this.meetings];
@@ -70,10 +71,16 @@ export class ReunionesComponent implements OnInit {
   }
 
   cancelMeeting(meeting: Meeting): void {
-    const confirmCancel = confirm(`¿Estás seguro de que quieres cancelar la reunión de ${meeting.subject} el ${meeting.date}?`);
-    if (confirmCancel) {
-      this.filteredMeetings = this.filteredMeetings.filter(m => m !== meeting);
-      this.meetings = this.meetings.filter(m => m !== meeting);
-    }
+    this.modalService.confirm(
+      'Cancelar Reunión',
+      `¿Estás seguro de que quieres cancelar la reunión de ${meeting.subject} el ${meeting.date}?`,
+      'Sí, Cancelar',
+      'No, mantener'
+    ).then(confirmed => {
+      if (confirmed) {
+        this.filteredMeetings = this.filteredMeetings.filter(m => m !== meeting);
+        this.meetings = this.meetings.filter(m => m !== meeting);
+      }
+    });
   }
 }

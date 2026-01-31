@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModalService } from '../../shared/services/modal.service';
 
 @Component({
   selector: 'app-calendario-profesor',
@@ -12,7 +13,7 @@ export class CalendarioProfesorComponent implements OnInit {
 
   currentDate: Date = new Date();
   selectedDate: Date | null = null;
-  
+
   // Lista de horas seleccionadas (para permitir marcar/desmarcar)
   selectedHours: string[] = [];
 
@@ -25,13 +26,15 @@ export class CalendarioProfesorComponent implements OnInit {
 
   // Definimos las horas en un array para que el HTML sea más limpio
   hours: string[] = [
-    '08:30 - 09:25', 
-    '09:30 - 10:25', 
-    '11:00 - 11:55', 
-    '12:00 - 12:55', 
-    '13:00 - 13:55', 
+    '08:30 - 09:25',
+    '09:30 - 10:25',
+    '11:00 - 11:55',
+    '12:00 - 12:55',
+    '13:00 - 13:55',
     '14:00 - 14:55'
   ];
+
+  constructor(private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.renderCalendar();
@@ -77,7 +80,6 @@ export class CalendarioProfesorComponent implements OnInit {
     this.selectedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day.day);
   }
 
-  // --- FUNCIÓN PARA MARCAR / DESMARCAR ---
   toggleHour(hour: string): void {
     const index = this.selectedHours.indexOf(hour);
     if (index > -1) {
@@ -91,9 +93,15 @@ export class CalendarioProfesorComponent implements OnInit {
 
   confirmMeeting(): void {
     if (this.selectedDate && this.selectedHours.length > 0) {
-      alert(`Confirmado para el ${this.selectedDate.toLocaleDateString()} a las: ${this.selectedHours.join(', ')}`);
+      this.modalService.alert(
+        'Reunión Confirmada',
+        `Confirmado para el ${this.selectedDate.toLocaleDateString()} a las: ${this.selectedHours.join(', ')}`
+      );
     } else {
-      alert('Por favor, selecciona una fecha y al menos una hora.');
+      this.modalService.alert(
+        'Atención',
+        'Por favor, selecciona una fecha y al menos una hora.'
+      );
     }
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModalService } from '../../shared/services/modal.service';
 
 interface Notification {
   id: number;
@@ -43,7 +44,7 @@ export class NotificacionesProfesorComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.loadNotifications();
@@ -58,8 +59,16 @@ export class NotificacionesProfesorComponent implements OnInit {
   }
 
   clearAllNotifications(): void {
-    if (this.notifications.length > 0 && confirm('¿Estás seguro de que quieres eliminar todas las notificaciones?')) {
-      this.notifications = [];
-    }
+    if (this.notifications.length === 0) return;
+
+    this.modalService.confirm(
+      'Eliminar Notificaciones',
+      '¿Estás seguro de que quieres eliminar todas las notificaciones?',
+      'Eliminar Todas'
+    ).then(confirmed => {
+      if (confirmed) {
+        this.notifications = [];
+      }
+    });
   }
 }

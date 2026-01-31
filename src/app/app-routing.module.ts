@@ -11,7 +11,8 @@ import { CalendarioProfesorComponent } from './features/calendario-profesor/cale
 import { ProximasReunionesProfesorComponent } from './features/proximas-reuniones-profesor/proximas-reuniones-profesor.component';
 import { NotificacionesProfesorComponent } from './features/notificaciones-profesor/notificaciones-profesor.component';
 import { ReunionesPasadasProfesorComponent } from './features/reuniones-pasadas-profesor/reuniones-pasadas-profesor.component';
-import { ActaPasadaProfesorComponent} from './features/acta-pasada-profesor/acta-pasada-profesor.component';
+import { ActaPasadaProfesorComponent } from './features/acta-pasada-profesor/acta-pasada-profesor.component';
+import { FaqComponent } from './features/faq/faq.component';
 const routes: Routes = [
   {
     path: '',
@@ -28,8 +29,9 @@ const routes: Routes = [
       { path: 'reunionesprofesor', component: ProximasReunionesProfesorComponent },
       { path: 'notificacionesprofesor', component: NotificacionesProfesorComponent },
       { path: 'reunionespasadasprofesor', component: ReunionesPasadasProfesorComponent },
-      { path: 'actapasadaprofesor', component: ActaPasadaProfesorComponent }
-      ]
+      { path: 'actapasadaprofesor', component: ActaPasadaProfesorComponent },
+      { path: 'faq', component: FaqComponent }
+    ]
   }
 ];
 
